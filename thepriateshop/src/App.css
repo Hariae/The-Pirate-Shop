@@ -30,3 +30,43 @@
     transform: rotate(360deg);
   }
 }
+
+/*Custom Styling*/
+
+
+.center-content{
+  text-align: center;
+}
+
+.pad-1-pc{
+  padding : 1%;
+}
+
+.pad-10-pc{
+  padding: 10%;
+}
+.product-container:hover{
+  box-shadow: 10px 10px 5px grey;
+}
+img{
+  width: 100px;
+  height: 100px;
+}
+.product-title{
+  font-size: 18px;
+}
+
+.flt-right{
+  float:right;
+}
+
+.cost-tab{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.discount-tab{
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
