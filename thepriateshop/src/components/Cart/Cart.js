@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+/**The cart lists the products in the shopping cart. Disocounts are applied based on business rules
+ * Count of the products in the cart can be changed. User can return to products page. 
+ */
 
 class Cart extends Component {
 

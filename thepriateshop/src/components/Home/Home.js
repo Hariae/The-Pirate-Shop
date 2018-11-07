@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 
-
+/**The Home page is the landing page. This page lists the products available and has the option to add 
+ * products to cart. Clicking on add cart takes the user to cart. 
+ */
 
 class Home extends Component {
 
