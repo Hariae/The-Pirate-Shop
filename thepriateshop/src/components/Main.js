@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './Home/Home';
 import Cart from './Cart/Cart';
 
+//Entry Point of the application
 class Main extends Component {
 
     constructor(props) {
@@ -67,6 +68,7 @@ class Main extends Component {
 
     render() {
 
+        //Toggle Pages
         let homePage = null;
         if (this.state.homePageView === true) {
             homePage = <Home products={this.state.products} addToCart={this.addToCart} />
@@ -80,7 +82,6 @@ class Main extends Component {
 
         return (
             <div>
-
                 <div className="header container center-content">
                     <h1>The Piratical Liz's store</h1>
                 </div>

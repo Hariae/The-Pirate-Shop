@@ -29,9 +29,15 @@ class Cart extends Component {
 
     //To track the item count
     countChange = (Parameter, event) => {
-        console.log('count', this.state.countChanged);
-        this.props.cart[Parameter].Count++;
-
+        const target = event.target;
+        const id = target.id;
+        if(id === "increase"){
+            this.props.cart[Parameter].Count++;
+        }
+        else if(id === "reduce"){
+            this.props.cart[Parameter].Count--;
+        }
+        
         this.props.cart[Parameter].TotalPrice = this.props.cart[Parameter].Price * this.props.cart[Parameter].Count;
         this.calculateBill();
 
@@ -132,7 +138,11 @@ class Cart extends Component {
                 <tr key={index}>
                     <th scope="row">{index + 1}</th>
                     <td><b>{product.Title}</b></td>
-                    <td><b>{product.Count} </b><button className="btn btn-sm btn-success" onClick={this.countChange.bind(this, index)}>+</button></td>
+                    <td>
+                        <button className="btn btn-sm btn-success" id="reduce" onClick={this.countChange.bind(this, index)}>-</button>
+                        <b>{product.Count} </b>
+                        <button className="btn btn-sm btn-success" id="increase" onClick={this.countChange.bind(this, index)}>+</button>
+                    </td>
                     <td><b>{product.TotalPrice}</b></td>
                     <td><button className="btn btn-md btn-danger" id={index} onClick={this.deleteCartItem.bind(this)}>Delete</button></td>
                 </tr>
