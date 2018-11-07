@@ -7,43 +7,46 @@ class Main extends Component {
     constructor(props) {
         super(props);
 
+        //Initialization
         this.state = {
             homePageView: true,
             cartPageView: false,
             products: [
-                { Title: "Star Wars Episode IV DVD", Price: 20, TotalPrice: 20, Count:1 },
-                { Title: "Star Wars Episode V DVD", Price: 20, TotalPrice: 20,Count:1 },
-                { Title: "Star Wars Episode VI DVD", Price: 20, TotalPrice: 20,Count:1 },
-                { Title: "Star Wars Episode IV Blu-Ray", Price: 25, TotalPrice: 25, Count:1 },
-                { Title: "Star Wars Episode V Blu-Ray", Price: 25, TotalPrice: 25, Count:1 },
-                { Title: "Star Wars Episode VI Blu-Ray", Price: 25, TotalPrice: 25, Count:1 }
+                { Title: "Star Wars Episode IV DVD", Price: 20, TotalPrice: 20, Count: 1 },
+                { Title: "Star Wars Episode V DVD", Price: 20, TotalPrice: 20, Count: 1 },
+                { Title: "Star Wars Episode VI DVD", Price: 20, TotalPrice: 20, Count: 1 },
+                { Title: "Star Wars Episode IV Blu-Ray", Price: 25, TotalPrice: 25, Count: 1 },
+                { Title: "Star Wars Episode V Blu-Ray", Price: 25, TotalPrice: 25, Count: 1 },
+                { Title: "Star Wars Episode VI Blu-Ray", Price: 25, TotalPrice: 25, Count: 1 }
             ],
-            cart: []           
+            cart: []
         }
 
         //bind
         this.addToCart = this.addToCart.bind(this);
         this.redirectToHome = this.redirectToHome.bind(this);
-}
+    }
 
-    addToCart = (event)=>{
+    //Add item to cart
+    addToCart = (event) => {
         const target = event.target;
         var product = this.state.products[target.id];
         var cartArray = this.state.cart;
         console.log('product', product);
         var push = true;
-        
-        for(var i=0;i<cartArray.length;i++){
+
+        //To prevent adding the same item twice to the cart
+        for (var i = 0; i < cartArray.length; i++) {
             console.log('inside array');
-            if(cartArray[i].Title === product.Title){
-               push = false;
-            }           
+            if (cartArray[i].Title === product.Title) {
+                push = false;
+            }
         }
 
-        if(push === true){
+        if (push === true) {
             cartArray.push(product);
         }
-        
+
         console.log(cartArray);
         this.setState({
             cart: cartArray,
@@ -53,7 +56,8 @@ class Main extends Component {
 
     }
 
-    redirectToHome = ()=>{
+    //Back to Shopping
+    redirectToHome = () => {
         this.setState({
             homePageView: true,
             cartPageView: false
@@ -65,12 +69,12 @@ class Main extends Component {
 
         let homePage = null;
         if (this.state.homePageView === true) {
-            homePage = <Home products={this.state.products} addToCart={this.addToCart}/>
+            homePage = <Home products={this.state.products} addToCart={this.addToCart} />
         }
 
         let cartPage = null;
         if (this.state.cartPageView === true) {
-            cartPage = <Cart cart={this.state.cart} products={this.state.products} redirectToHome= {this.redirectToHome}/>
+            cartPage = <Cart cart={this.state.cart} products={this.state.products} redirectToHome={this.redirectToHome} />
         }
 
 
